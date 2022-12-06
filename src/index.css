@@ -5,8 +5,19 @@ body {
 }
 
 .App {
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 10px;
+  margin-right: 10px;
   border-style: groove;
   padding: 10px;
+}
+
+.memePost {
+  border-style: ridge;
+  margin-top: 20px;
+  padding: 10px;
+  padding-top: 0px;
+}
+
+.memePost img {
+  max-width: 200px;
 }
