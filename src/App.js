@@ -11,7 +11,7 @@ function App() {
   }, [])
 
   if (memes.length === 0) {
-    return <div></div>
+    return null
   }
 
   return (
