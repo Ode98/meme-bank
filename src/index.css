@@ -21,3 +21,7 @@ body {
 .memePost img {
   max-width: 200px;
 }
+
+.customFileInput {
+  content: none;
+}

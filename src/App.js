@@ -1,3 +1,4 @@
+import React from 'react'
 import memesService from './services/memes'
 import { useEffect, useState } from 'react'
 import Meme from './components/Meme'
@@ -7,17 +8,27 @@ function App() {
   const [memes, setMemes] = useState([])
 
   useEffect(() => {
-    memesService.getAll().then((newMemes) => setMemes(newMemes))
+    memesService.getAll().then((newMemes) => setMemes(newMemes.reverse()))
+    console.log('updated')
   }, [])
 
+  const addMeme = (title, file) => {
+    const memeObject = {
+      title: title,
+    }
+    memesService.create(memeObject, file).then((returnedMeme) => {
+      setMemes([returnedMeme.data].concat(memes))
+    })
+  }
+
   if (memes.length === 0) {
-    return null
+    return <MemePostForm createMeme={addMeme} />
   }
 
   return (
     <div className="App">
       <h1>Meme Bank</h1>
-      <MemePostForm />
+      <MemePostForm createMeme={addMeme} />
       {memes.map((meme) => (
         <Meme key={meme.id} meme={meme} />
       ))}

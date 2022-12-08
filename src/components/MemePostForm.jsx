@@ -1,36 +1,39 @@
+import React from 'react'
 import { useState } from 'react'
 
-const MemePostForm = () => {
+const MemePostForm = ({ createMeme }) => {
   const [file, setFile] = useState(null)
   const [title, setTitle] = useState('')
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(event.target)
+    createMeme(title, file)
+    setFile(null)
+    setTitle('')
   }
 
-  console.log(title, file)
-
-  // if (file) {
-  //   return null
-  // }
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0])
+  }
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <label>Nimeä postaus</label>
+        <label>Give a title</label>
         <input
           type="text"
           id="title"
           name="title"
+          value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <br />
         <input
+          className="custom-file-input"
           type="file"
           id="file"
           name="file"
-          onChange={(e) => setFile(e.target.files[0])}
+          onChange={handleFileChange}
         />
         <br />
         <button type="submit">Lähetä</button>
