@@ -3,13 +3,18 @@ import memesService from './services/memes'
 import { useEffect, useState } from 'react'
 import Meme from './components/Meme'
 import MemePostForm from './components/MemePostForm'
+import SearchBar from './components/SearchBar.jsx'
+import MemeFeed from './components/MemeFeed'
 
 function App() {
   const [memes, setMemes] = useState([])
+  const [searchResult, setSearchResult] = useState([])
 
   useEffect(() => {
-    memesService.getAll().then((newMemes) => setMemes(newMemes.reverse()))
-    console.log('updated')
+    memesService.getAll().then((newMemes) => {
+      setMemes(newMemes.reverse())
+      setSearchResult(newMemes)
+    })
   }, [])
 
   const addMeme = (title, file) => {
@@ -29,9 +34,8 @@ function App() {
     <div className="App">
       <h1>Meme Bank</h1>
       <MemePostForm createMeme={addMeme} />
-      {memes.map((meme) => (
-        <Meme key={meme.id} meme={meme} />
-      ))}
+      <br />
+      <MemeFeed memes={memes} />
     </div>
   )
 }

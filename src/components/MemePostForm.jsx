@@ -10,15 +10,16 @@ const MemePostForm = ({ createMeme }) => {
     createMeme(title, file)
     setFile(null)
     setTitle('')
+    document.getElementById('formid').reset()
   }
 
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0])
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0])
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
+    <div>
+      <form id="formid" onSubmit={handleSubmit}>
         <label>Give a title</label>
         <input
           type="text"
@@ -38,7 +39,7 @@ const MemePostForm = ({ createMeme }) => {
         <br />
         <button type="submit">Lähetä</button>
       </form>
-    </>
+    </div>
   )
 }
 
