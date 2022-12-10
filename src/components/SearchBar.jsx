@@ -1,5 +1,5 @@
 import React from 'react'
-import Meme from './Meme'
+import searchAlg from '../searchAlg'
 
 const SearchBar = ({ memes, searchResults, setSearchResults }) => {
   const handleSubmit = (e) => e.preventDefault()
@@ -10,9 +10,10 @@ const SearchBar = ({ memes, searchResults, setSearchResults }) => {
     const resultsArray = memes.filter((meme) =>
       meme.tags.includes(e.target.value)
     )
-
     setSearchResults(resultsArray)
   }
+
+  searchAlg()
 
   return (
     <div>
@@ -25,9 +26,6 @@ const SearchBar = ({ memes, searchResults, setSearchResults }) => {
         />
         <button className="search-button">Search</button>
       </form>
-      {searchResults.map((meme) => (
-        <Meme key={meme.id} meme={meme} />
-      ))}
     </div>
   )
 }

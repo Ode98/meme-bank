@@ -3,22 +3,28 @@ import memesService from './services/memes'
 import { useEffect, useState } from 'react'
 import MemePostForm from './components/MemePostForm'
 import MemeFeed from './components/MemeFeed'
+import SearchBar from './components/SearchBar'
 
 function App() {
   const [memes, setMemes] = useState([])
-  const [searchResult, setSearchResult] = useState([])
+  const [searchResults, setSearchResults] = useState([])
 
   useEffect(() => {
-    memesService.getAll().then((newMemes) => {
+    const fetchData = async () => {
+      const newMemes = await memesService.getAll()
       setMemes(newMemes.reverse())
-      setSearchResult(newMemes)
-    })
+      setSearchResults(newMemes)
+    }
+    fetchData()
   }, [])
 
   const addMeme = (file) => {
-    memesService.create(file).then((returnedMeme) => {
+    const postData = async () => {
+      const returnedMeme = await memesService.create(file)
       setMemes([returnedMeme.data].concat(memes))
-    })
+      setSearchResults(memes)
+    }
+    postData()
   }
 
   if (memes.length === 0) {
@@ -28,9 +34,14 @@ function App() {
   return (
     <div className="App">
       <h1>Meme Bank</h1>
+      <SearchBar
+        memes={memes}
+        searchResults={searchResults}
+        setSearchResults={setSearchResults}
+      />
       <MemePostForm createMeme={addMeme} />
       <br />
-      <MemeFeed memes={memes} />
+      <MemeFeed memes={searchResults} />
     </div>
   )
 }
