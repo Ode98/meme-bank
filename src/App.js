@@ -1,9 +1,7 @@
 import React from 'react'
 import memesService from './services/memes'
 import { useEffect, useState } from 'react'
-import Meme from './components/Meme'
 import MemePostForm from './components/MemePostForm'
-import SearchBar from './components/SearchBar.jsx'
 import MemeFeed from './components/MemeFeed'
 
 function App() {
@@ -17,11 +15,8 @@ function App() {
     })
   }, [])
 
-  const addMeme = (title, file) => {
-    const memeObject = {
-      title: title,
-    }
-    memesService.create(memeObject, file).then((returnedMeme) => {
+  const addMeme = (file) => {
+    memesService.create(file).then((returnedMeme) => {
       setMemes([returnedMeme.data].concat(memes))
     })
   }

@@ -14,10 +14,9 @@ const getAll = async () => {
   return response.data
 }
 
-const create = async (meme, img) => {
+const create = async (img) => {
   const imageUrl = await axios.post(postImgUrl, formImageData(img))
   const request = await axios.post(baseUrl, {
-    ...meme,
     url: imageUrl.data.data,
   })
   return request.data
