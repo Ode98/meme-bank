@@ -1,19 +1,15 @@
 import React from 'react'
-import searchAlg from '../searchAlg'
+import searchAlg from '../helpers/searchAlg'
 
-const SearchBar = ({ memes, searchResults, setSearchResults }) => {
+const SearchBar = ({ memes, setSearchResults }) => {
   const handleSubmit = (e) => e.preventDefault()
 
   const handleSearchChange = (e) => {
     if (!e.target.value) return setSearchResults(memes)
-
-    const resultsArray = memes.filter((meme) =>
-      meme.tags.includes(e.target.value)
-    )
+    const searchArray = e.target.value.trim().replace(/-/g, '').split(' ')
+    const resultsArray = searchAlg(memes, searchArray)
     setSearchResults(resultsArray)
   }
-
-  searchAlg()
 
   return (
     <div>

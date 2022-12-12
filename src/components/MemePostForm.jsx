@@ -6,13 +6,14 @@ const MemePostForm = ({ createMeme }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    createMeme(file)
+    const files = Object.values(file)
+    files.forEach((f) => createMeme(f))
     setFile(null)
     document.getElementById('formid').reset()
   }
 
   const handleFileChange = (event) => {
-    setFile(event.target.files[0])
+    setFile(event.target.files)
   }
 
   return (
@@ -23,6 +24,7 @@ const MemePostForm = ({ createMeme }) => {
           type="file"
           id="file"
           name="file"
+          multiple="multiple"
           onChange={handleFileChange}
         />
         <br />

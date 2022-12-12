@@ -15,6 +15,7 @@ const getAll = async () => {
 }
 
 const create = async (img) => {
+  console.log('image is', img)
   const imageUrl = await axios.post(postImgUrl, formImageData(img))
   const request = await axios.post(baseUrl, {
     url: imageUrl.data.data,

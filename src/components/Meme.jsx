@@ -1,9 +1,10 @@
 import React from 'react'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const Meme = ({ meme }) => {
   return (
     <div className="memePost">
-      <img src={meme.url} alt={meme.url} target="_blank"></img>
+      <LazyLoadImage src={meme.url} alt={meme.url} />
       <a
         href={meme.url}
         download={meme.url}
