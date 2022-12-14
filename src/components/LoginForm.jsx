@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import loginService from '../services/login'
 import CreateUserForm from './CreateUserForm'
+import memesService from '../services/memes'
 
 const LoginForm = ({ setUser }) => {
   const [username, setUsername] = useState('')
@@ -16,6 +17,7 @@ const LoginForm = ({ setUser }) => {
       })
       window.localStorage.setItem('loggedBlogappUser', JSON.stringify(user))
       setUser(user)
+      memesService.setToken(user.token)
       setUsername('')
       setPassword('')
     } catch (exception) {}

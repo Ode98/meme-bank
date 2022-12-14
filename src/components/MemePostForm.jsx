@@ -1,13 +1,17 @@
 import React from 'react'
 import { useState } from 'react'
 
-const MemePostForm = ({ createMeme }) => {
+const MemePostForm = ({ createMeme, user }) => {
   const [file, setFile] = useState(null)
+  const isDisabled = user === null
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    if (!file) {
+      return
+    }
     const files = Object.values(file)
-    files.forEach((f) => createMeme(f))
+    createMeme(files)
     setFile(null)
     document.getElementById('formid').reset()
   }
@@ -20,15 +24,17 @@ const MemePostForm = ({ createMeme }) => {
     <div>
       <form id="formid" onSubmit={handleSubmit}>
         <input
-          className="custom-file-input"
           type="file"
           id="file"
           name="file"
           multiple="multiple"
           onChange={handleFileChange}
+          disabled={isDisabled}
         />
         <br />
-        <button type="submit">Lähetä</button>
+        <button type="submit" disabled={isDisabled}>
+          Lähetä
+        </button>
       </form>
     </div>
   )

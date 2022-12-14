@@ -3,6 +3,12 @@ import axios from 'axios'
 const baseUrl = '/api/memes'
 const postImgUrl = '/api/images'
 
+let token = null
+
+const setToken = (newToken) => {
+  token = `bearer ${newToken}`
+}
+
 const formImageData = (img) => {
   const formdata = new FormData()
   formdata.append('file', img)
@@ -15,17 +21,24 @@ const getAll = async () => {
 }
 
 const create = async (img) => {
-  console.log('image is', img)
+  const config = {
+    headers: { Authorization: token },
+  }
   const imageUrl = await axios.post(postImgUrl, formImageData(img))
-  const request = await axios.post(baseUrl, {
-    url: imageUrl.data.data,
-  })
+  const request = await axios.post(
+    baseUrl,
+    {
+      url: imageUrl.data.data,
+    },
+    config
+  )
   return request.data
 }
 
 const memesService = {
   getAll,
   create,
+  setToken,
 }
 
 export default memesService
