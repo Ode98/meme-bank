@@ -11,14 +11,12 @@
 | 10.12.2022 | 3      | Bugien korjaamista hakuiominaisuudesta, hakualgoritmin suunnittelua ja testailua                                                                                       |
 | 12.12.2022 | 7      | Hakuominaisuuden viimeistely, Mahdollisuus usean tiedoston postaamiseen samaan aikaan, ns. lazyloadin lisääminen kuville. Muu optimisaatio                             |
 | 13.12.2022 | 5      | Lisätty käyttäjän luonti ja kirjautumistoiminnallisuudet. Selvitelty kuvien jatkuvaan uudelleenlataamiseen liittyvää ongelmaa, korjailtu bugeja.                       |
-| 13.12.2022 | 5      | Bugien selvittelyä ja korjaamista, lisätty latausanimaatio, Nyt vain käyttäjä pystyy postaaman meemin. Muutettu latauslinkki suoraan kuvaan.                           |
-| Yhteensä   | 45     |
+| 13.12.2022 | 6      | Bugien selvittelyä ja korjaamista, lisätty latausanimaatio, Nyt vain käyttäjä pystyy postaaman meemin. Muutettu latauslinkki suoraan kuvaan.                           |
+| 14.12.2022 | 7      | Tykkäys ja epätykkäystoiminnon lisääminen meemeihin. Sovelluksen tyylittämistä css:llä, refaktorointia.                                                                |
+| Yhteensä   | 53     |
 | Tavoite    | 87.5   |
-| Suoritettu | 50%    |
+| Suoritettu | 60%    |
 
 ## Käyttötarkoitus
 
 ## Puuttuvia ominaisuuksia
-
-- Käyttäjäkirjautuminen ja luonti
-- Kuvien tykkääminen ja kommentointi

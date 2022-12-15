@@ -26,7 +26,7 @@ const LoginForm = ({ setUser }) => {
   return (
     <div>
       <div className="loginForm">
-        <h2>Login</h2>
+        <b>Login</b>
         <form onSubmit={handleLogin}>
           <div>
             <label>Username</label>

@@ -12,17 +12,12 @@ const SearchBar = ({ memes, setSearchResults }) => {
   }
 
   return (
-    <div>
-      <form className="search" onSubmit={handleSubmit}>
-        <input
-          className="search-input"
-          type="text"
-          id="search"
-          onChange={handleSearchChange}
-        />
-        <button className="search-button">Hae</button>
+    <>
+      <form className="search-bar" onSubmit={handleSubmit}>
+        <input type="text" id="search" onChange={handleSearchChange} />
+        <button>Hae</button>
       </form>
-    </div>
+    </>
   )
 }
 export default SearchBar

@@ -35,10 +35,16 @@ const create = async (img) => {
   return request.data
 }
 
+const update = async (id, newObject) => {
+  const response = await axios.put(`${baseUrl}/${id}`, newObject)
+  return response.data
+}
+
 const memesService = {
   getAll,
   create,
   setToken,
+  update,
 }
 
 export default memesService

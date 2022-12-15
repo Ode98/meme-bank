@@ -47,14 +47,18 @@ function App() {
     postData()
   }
 
+  const handleLike = (meme, dislike, memeLikes) => {
+    console.log('LikeMeme', meme.id, meme.likes)
+    memesService.update(meme.id, {
+      ...meme,
+      likes: memeLikes + (dislike ? -1 : 1),
+    })
+  }
+
   const handleLogout = () => {
     setUser(null)
     localStorage.removeItem('loggedBlogappUser')
   }
-
-  // if (user === null) {
-  //   return <LoginForm user={user} setUser={setUser} />
-  // }
 
   if (memes.length === 0) {
     return <MemePostForm createMeme={addMeme} />
@@ -62,24 +66,23 @@ function App() {
 
   return (
     <div className="App">
-      <LoginForm user={user} setUser={setUser} />
+      {/* <LoginForm user={user} setUser={setUser} /> */}
       <h1>MeemiPankki</h1>
-      {user !== null ? (
+      {/* {user !== null ? (
         <>
           {user.username} <button onClick={handleLogout}>Logout</button>
         </>
       ) : (
         <></>
-      )}
+      )} */}
       <SearchBar
         memes={memes}
         searchResults={searchResults}
         setSearchResults={setSearchResults}
       />
-      <MemePostForm createMeme={addMeme} user={user} />
-      <br />
-      {spinner ? <LoadingSpinner /> : <></>}
-      <MemeFeed memes={searchResults} />
+      {/* <MemePostForm createMeme={addMeme} user={user} />
+      {spinner ? <LoadingSpinner /> : <></>} */}
+      <MemeFeed memes={searchResults} handleLike={handleLike} />
     </div>
   )
 }

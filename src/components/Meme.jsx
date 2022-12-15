@@ -1,7 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
+import { GoThumbsup, GoThumbsdown } from 'react-icons/go'
 
-const Meme = ({ meme }) => {
+const Meme = ({ meme, handleLike }) => {
+  const [memeLikes, setMemeLikes] = useState(meme.likes)
+
+  const likeMeme = (dislike) => {
+    if (dislike) {
+      setMemeLikes(memeLikes - 1)
+    } else {
+      setMemeLikes(memeLikes + 1)
+    }
+    handleLike(meme, dislike, memeLikes)
+  }
+
+  const LikeMeme = () => {
+    return (
+      <div className="like-buttons">
+        <GoThumbsup className="like-button" onClick={() => likeMeme(false)} />
+        <b>{memeLikes}</b>
+        <GoThumbsdown
+          className="dislike-button"
+          onClick={() => likeMeme(true)}
+        />
+      </div>
+    )
+  }
+
   const downloadImage = (event) => {
     event.preventDefault()
     const imageUrl = event.target.src
@@ -16,8 +41,9 @@ const Meme = ({ meme }) => {
   }
 
   return (
-    <div className="memePost">
+    <div className="meme-post">
       <LazyLoadImage src={meme.url} alt={meme.url} onClick={downloadImage} />
+      <LikeMeme />
     </div>
   )
 }

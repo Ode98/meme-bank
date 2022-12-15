@@ -23,7 +23,7 @@ const CreateUserForm = () => {
   return (
     <div>
       <div className="CreateUserForm">
-        <h2>Create a new user</h2>
+        <b>Create a new user</b>
         <form onSubmit={handleSubmit}>
           <div>
             <label>Username</label>
