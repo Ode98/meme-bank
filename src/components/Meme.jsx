@@ -1,11 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { GoThumbsup, GoThumbsdown } from 'react-icons/go'
+import userService from '../services/user'
 
-const Meme = ({ meme, handleLike }) => {
+const Meme = ({ meme, handleLike, user }) => {
   const [memeLikes, setMemeLikes] = useState(meme.likes)
+  const [userLikedMemes, setUserLikedMemes] = useState([])
+
+  useEffect(() => {
+    const fetchLikedMemes = async () => {
+      const likedMemes = await userService.getUserLikedMemes()
+      setUserLikedMemes(likedMemes)
+    }
+    fetchLikedMemes()
+  }, [])
 
   const likeMeme = (dislike) => {
+    if (userLikedMemes.includes(meme.id)) {
+      return
+    }
+    setUserLikedMemes(userLikedMemes.concat(meme.id))
     if (dislike) {
       setMemeLikes(memeLikes - 1)
     } else {
@@ -13,7 +27,6 @@ const Meme = ({ meme, handleLike }) => {
     }
     handleLike(meme, dislike, memeLikes)
   }
-
   const LikeMeme = () => {
     return (
       <div className="like-buttons">

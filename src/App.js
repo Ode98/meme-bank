@@ -6,12 +6,14 @@ import MemeFeed from './components/MemeFeed'
 import SearchBar from './components/SearchBar'
 import LoginForm from './components/LoginForm'
 import LoadingSpinner from './components/LoadingSpinner'
+import userService from './services/user'
 
 function App() {
   const [memes, setMemes] = useState([])
   const [searchResults, setSearchResults] = useState([])
   const [user, setUser] = useState(null)
   const [spinner, setSpinner] = useState(false)
+  const [likedmemes, setLikedMemes] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,11 +25,12 @@ function App() {
   }, [])
 
   useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
+    const loggedUserJSON = window.localStorage.getItem('loggedMemeAppUser')
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON)
       setUser(user)
       memesService.setToken(user.token)
+      userService.setToken(user.token)
     }
   }, [])
 
@@ -57,7 +60,7 @@ function App() {
 
   const handleLogout = () => {
     setUser(null)
-    localStorage.removeItem('loggedBlogappUser')
+    localStorage.removeItem('loggedMemeAppUser')
   }
 
   if (memes.length === 0) {
@@ -66,23 +69,29 @@ function App() {
 
   return (
     <div className="App">
-      {/* <LoginForm user={user} setUser={setUser} /> */}
+      <LoginForm user={user} setUser={setUser} />
       <h1>MeemiPankki</h1>
-      {/* {user !== null ? (
+      {user !== null ? (
         <>
           {user.username} <button onClick={handleLogout}>Logout</button>
         </>
       ) : (
         <></>
-      )} */}
-      <SearchBar
-        memes={memes}
-        searchResults={searchResults}
-        setSearchResults={setSearchResults}
-      />
-      {/* <MemePostForm createMeme={addMeme} user={user} />
-      {spinner ? <LoadingSpinner /> : <></>} */}
-      <MemeFeed memes={searchResults} handleLike={handleLike} />
+      )}
+      {memes.length === 0 ? (
+        <></>
+      ) : (
+        <>
+          <SearchBar
+            memes={memes}
+            searchResults={searchResults}
+            setSearchResults={setSearchResults}
+          />
+          <MemePostForm createMeme={addMeme} user={user} />
+          {spinner ? <LoadingSpinner /> : <></>}
+          <MemeFeed memes={searchResults} handleLike={handleLike} user={user} />
+        </>
+      )}
     </div>
   )
 }
