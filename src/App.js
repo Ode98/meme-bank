@@ -7,13 +7,13 @@ import SearchBar from './components/SearchBar'
 import LoginForm from './components/LoginForm'
 import LoadingSpinner from './components/LoadingSpinner'
 import userService from './services/user'
+import MenuBar from './components/MenuBar'
 
 function App() {
   const [memes, setMemes] = useState([])
   const [searchResults, setSearchResults] = useState([])
   const [user, setUser] = useState(null)
   const [spinner, setSpinner] = useState(false)
-  const [likedmemes, setLikedMemes] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,11 +50,11 @@ function App() {
     postData()
   }
 
-  const handleLike = (meme, dislike, memeLikes) => {
+  const handleLike = (meme, memeLikes) => {
     console.log('LikeMeme', meme.id, meme.likes)
     memesService.update(meme.id, {
       ...meme,
-      likes: memeLikes + (dislike ? -1 : 1),
+      likes: memeLikes + 1,
     })
   }
 
@@ -69,6 +69,7 @@ function App() {
 
   return (
     <div className="App">
+      <MenuBar user={user} />
       <LoginForm user={user} setUser={setUser} />
       <h1>MeemiPankki</h1>
       {user !== null ? (
