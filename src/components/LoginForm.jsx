@@ -1,10 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
 import loginService from '../services/login'
-import CreateUserForm from './CreateUserForm'
 import memesService from '../services/memes'
 
-const LoginForm = ({ setUser }) => {
+const LoginForm = ({ setUser, setLoginFormVisible }) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
@@ -20,38 +19,36 @@ const LoginForm = ({ setUser }) => {
       memesService.setToken(user.token)
       setUsername('')
       setPassword('')
+      setLoginFormVisible(false)
     } catch (exception) {}
   }
 
   return (
-    <div>
-      <div className="loginForm">
-        <b>Login</b>
-        <form onSubmit={handleLogin}>
-          <div>
-            <label>Username</label>
-            <input
-              id="username"
-              type="text"
-              value={username}
-              name="Username"
-              onChange={({ target }) => setUsername(target.value)}
-            />
-          </div>
-          <div>
-            <label>Password</label>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              name="Password"
-              onChange={({ target }) => setPassword(target.value)}
-            />
-          </div>
-          <button type="submit">Login</button>
-        </form>
-      </div>
-      <CreateUserForm />
+    <div className="login-form">
+      <b>Kirjaudu sisään</b>
+      <form onSubmit={handleLogin}>
+        <div>
+          <label>Käyttäjätunnus</label>
+          <input
+            id="username"
+            type="text"
+            value={username}
+            name="Username"
+            onChange={({ target }) => setUsername(target.value)}
+          />
+        </div>
+        <div>
+          <label>Salasana</label>
+          <input
+            id="password"
+            type="password"
+            value={password}
+            name="Password"
+            onChange={({ target }) => setPassword(target.value)}
+          />
+        </div>
+        <button type="submit">Kirjaudu</button>
+      </form>
     </div>
   )
 }

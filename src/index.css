@@ -9,6 +9,8 @@ body {
 .App {
   margin: 10px;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .customFileInput {
@@ -54,7 +56,6 @@ h1 {
 .meme-post img {
   max-width: 640px;
   border-radius: 10px;
-  padding-bottom: 10px;
 }
 
 .like-button {
@@ -115,19 +116,14 @@ h1 {
   width: 660px;
 }
 
-button {
-  height: 32px;
-  padding: 0 16px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 14px;
+/* The menu bar element */
+
+.menu {
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
 }
 
-/* The menu bar element */
 .menu-bar {
   display: flex;
   flex-direction: row;
@@ -140,4 +136,81 @@ button {
   margin: 0 auto;
   background-color: rgb(255, 255, 255);
   margin-bottom: 20px;
+}
+
+.menu-bar button {
+  height: 32px;
+  padding: 0 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* The forms element */
+
+.forms {
+  display: flex;
+  align-items: center;
+  width: 25%;
+  margin: 0 auto;
+  display: block;
+  padding-top: 10px;
+}
+
+.forms b {
+  display: block;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.forms label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.forms input {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.forms button[type='submit'] {
+  width: 100%;
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* notifcation element */
+
+.notification {
+  color: Blue;
+  padding: 10px;
+  border-radius: 5px;
+  align-items: center;
+  margin: auto;
+}
+
+/* Spinner element */
+
+.spinner-element {
+  margin: auto;
+  text-align: center;
 }

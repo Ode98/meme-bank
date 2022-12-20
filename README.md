@@ -15,9 +15,10 @@
 | 15.12.2022 | 7      | Tykkäys ja epätykkäystoiminnon lisääminen meemeihin. Sovelluksen tyylittämistä css:llä, refaktorointia.                                                                      |
 | 16.12.2022 | 6      | Lisätty Hover-animaatiot tykkäysnapeille. Käyttäjät pystyvät nyt tykkäämään postauksesta vain kerran. Tieto tykätyistä memeistä tallentuu mongoon.                           |
 | 19.12.2022 | 5      | Selvitetty proxy-bugia, lisätty proxy-middleware. Poistettu dislike-ominaisuus ja otettu tykkäysominaisuus pois käytöstä (ainakin väliaikaisesti). Luotu pohja menupalkille. |
-| Yhteensä   | 64     |
+| 20.12.2022 | 7      | Lisätty valikkopalkin ominaisuudet ja muotoiltu, muotoiltu formit avautumaan ja sulkeutumaan painalluksesta. Lisätty notifikaatiokomponentti.                                |
+| Yhteensä   | 71     |
 | Tavoite    | 87.5   |
-| Suoritettu | 73%    |
+| Suoritettu | 80%    |
 
 ## Käyttötarkoitus
 
@@ -25,3 +26,8 @@
 
 - Hakualgoritmi paremmaksi
 - Koodin refaktorointi
+
+## Lisättäviä asioita
+
+- Notifikaatiot ja varoitukset
+- About -osio

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-const MemePostForm = ({ createMeme, user }) => {
+const MemePostForm = ({ createMeme, user, setMemePostFormVisible }) => {
   const [file, setFile] = useState(null)
   const isDisabled = user === null
 
@@ -14,6 +14,7 @@ const MemePostForm = ({ createMeme, user }) => {
     createMeme(files)
     setFile(null)
     document.getElementById('formid').reset()
+    setMemePostFormVisible(false)
   }
 
   const handleFileChange = (event) => {
@@ -21,8 +22,9 @@ const MemePostForm = ({ createMeme, user }) => {
   }
 
   return (
-    <div>
+    <div className="meme-post-form">
       <form id="formid" onSubmit={handleSubmit}>
+        <b>Lataa kuvia palvelimelle</b>
         <input
           type="file"
           id="file"

@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import MemePostForm from './components/MemePostForm'
 import MemeFeed from './components/MemeFeed'
 import SearchBar from './components/SearchBar'
-import LoginForm from './components/LoginForm'
 import LoadingSpinner from './components/LoadingSpinner'
 import userService from './services/user'
 import MenuBar from './components/MenuBar'
@@ -69,16 +68,13 @@ function App() {
 
   return (
     <div className="App">
-      <MenuBar user={user} />
-      <LoginForm user={user} setUser={setUser} />
+      <MenuBar
+        user={user}
+        handleLogout={handleLogout}
+        setUser={setUser}
+        addMeme={addMeme}
+      />
       <h1>MeemiPankki</h1>
-      {user !== null ? (
-        <>
-          {user.username} <button onClick={handleLogout}>Logout</button>
-        </>
-      ) : (
-        <></>
-      )}
       {memes.length === 0 ? (
         <></>
       ) : (
@@ -88,8 +84,10 @@ function App() {
             searchResults={searchResults}
             setSearchResults={setSearchResults}
           />
-          <MemePostForm createMeme={addMeme} user={user} />
-          {spinner ? <LoadingSpinner /> : <></>}
+          <div className="spinner-element">
+            {spinner ? <LoadingSpinner /> : <></>}
+          </div>
+
           <MemeFeed memes={searchResults} handleLike={handleLike} user={user} />
         </>
       )}

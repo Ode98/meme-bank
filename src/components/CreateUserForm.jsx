@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import userService from '../services/user'
 
-const CreateUserForm = () => {
+const CreateUserForm = ({ setCreateUserFormVisible }) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
@@ -15,39 +15,38 @@ const CreateUserForm = () => {
       })
       setUsername('')
       setPassword('')
+      setCreateUserFormVisible(false)
     } catch (exception) {
       console.log(exception)
     }
   }
 
   return (
-    <div>
-      <div className="CreateUserForm">
-        <b>Create a new user</b>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Username</label>
-            <input
-              id="newUsername"
-              type="text"
-              value={username}
-              name="Username"
-              onChange={({ target }) => setUsername(target.value)}
-            />
-          </div>
-          <div>
-            <label>Password</label>
-            <input
-              id="newPassword"
-              type="password"
-              value={password}
-              name="Password"
-              onChange={({ target }) => setPassword(target.value)}
-            />
-          </div>
-          <button type="submit">Create User</button>
-        </form>
-      </div>
+    <div className="create-user-form">
+      <b>Luo uusi käyttäjä</b>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Käyttäjätunnus</label>
+          <input
+            id="newUsername"
+            type="text"
+            value={username}
+            name="Username"
+            onChange={({ target }) => setUsername(target.value)}
+          />
+        </div>
+        <div>
+          <label>Salasana</label>
+          <input
+            id="newPassword"
+            type="password"
+            value={password}
+            name="Password"
+            onChange={({ target }) => setPassword(target.value)}
+          />
+        </div>
+        <button type="submit">Rekisteröidy</button>
+      </form>
     </div>
   )
 }
