@@ -16,9 +16,10 @@
 | 16.12.2022 | 6      | Lisätty Hover-animaatiot tykkäysnapeille. Käyttäjät pystyvät nyt tykkäämään postauksesta vain kerran. Tieto tykätyistä memeistä tallentuu mongoon.                           |
 | 19.12.2022 | 5      | Selvitetty proxy-bugia, lisätty proxy-middleware. Poistettu dislike-ominaisuus ja otettu tykkäysominaisuus pois käytöstä (ainakin väliaikaisesti). Luotu pohja menupalkille. |
 | 20.12.2022 | 7      | Lisätty valikkopalkin ominaisuudet ja muotoiltu, muotoiltu formit avautumaan ja sulkeutumaan painalluksesta. Lisätty notifikaatiokomponentti.                                |
-| Yhteensä   | 71     |
+| 21.12.2022 | 7      | Lisätty About-sivu, suoritettu sovelluksen testausta, korjattu bugi joka esti tekstittömän kuvan lisäämisen. Refaktoroitu koodia. Muokattu notifikaatiota.                   |
+| Yhteensä   | 78     |
 | Tavoite    | 87.5   |
-| Suoritettu | 80%    |
+| Suoritettu | 90%    |
 
 ## Käyttötarkoitus
 
