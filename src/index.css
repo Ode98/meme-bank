@@ -51,6 +51,7 @@ h1 {
   border-radius: 10px;
   width: 660px;
   background-color: white;
+  min-height: 300px;
 }
 
 .meme-post img {
@@ -155,8 +156,7 @@ h1 {
 .forms {
   display: flex;
   align-items: center;
-  width: 25%;
-  margin: 0 auto;
+  margin: auto;
   display: block;
   padding-top: 10px;
 }
@@ -186,7 +186,7 @@ h1 {
   font-size: 16px;
 }
 
-.forms button[type='submit'] {
+.forms button[type="submit"] {
   width: 100%;
   padding: 12px 20px;
   background-color: #007bff;
@@ -214,3 +214,33 @@ h1 {
   margin: auto;
   text-align: center;
 }
+
+/* About page element */
+
+.about-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 10px;
+  border-radius: 10px;
+  width: 660px;
+  background-color: white;
+}
+
+.about-page img {
+  padding: 20px;
+}
+
+/* .login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 10px;
+  border-radius: 10px;
+  width: 660px;
+  background-color: white;
+} */

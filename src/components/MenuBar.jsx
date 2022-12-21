@@ -1,41 +1,48 @@
-import React, { useState } from 'react'
-import LoginForm from './LoginForm'
-import CreateUserForm from './CreateUserForm'
-import MemePostForm from './MemePostForm'
-import Notification from './Notification'
+import React, { useState } from "react";
+import LoginForm from "./LoginForm";
+import CreateUserForm from "./CreateUserForm";
+import MemePostForm from "./MemePostForm";
+import Notification from "./Notification";
+import AboutSection from "./AboutSection";
 
 const MenuBar = ({ user, handleLogout, setUser, addMeme }) => {
-  const [createUserFormVisible, setCreateUserFormVisible] = useState(false)
-  const [LoginFormVisible, setLoginFormVisible] = useState(false)
-  const [memePostFormVisible, setMemePostFormVisible] = useState(false)
-  const [notificationMessage, setNotificationMessage] = useState('')
+  const [createUserFormVisible, setCreateUserFormVisible] = useState(false);
+  const [LoginFormVisible, setLoginFormVisible] = useState(false);
+  const [memePostFormVisible, setMemePostFormVisible] = useState(false);
+  const [aboutSectionVisible, setAboutSectionVisible] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState("");
 
   const forms = [
     {
-      event: 'register',
+      event: "register",
       state: createUserFormVisible,
       setState: setCreateUserFormVisible,
     },
-    { event: 'login', state: LoginFormVisible, setState: setLoginFormVisible },
+    { event: "login", state: LoginFormVisible, setState: setLoginFormVisible },
     {
-      event: 'upload',
+      event: "upload",
       state: memePostFormVisible,
       setState: setMemePostFormVisible,
     },
-  ]
+    {
+      event: "about",
+      state: aboutSectionVisible,
+      setState: setAboutSectionVisible,
+    },
+  ];
 
   const handleVisibility = (event) => {
-    const form = forms.find((form) => form.event === event)
-    if (!form) return
+    const form = forms.find((form) => form.event === event);
+    if (!form) return;
 
     forms.forEach((form) => {
       if (form.event === event) {
-        form.setState(!form.state)
+        form.setState(!form.state);
       } else {
-        form.setState(false)
+        form.setState(false);
       }
-    })
-  }
+    });
+  };
 
   const formComponent =
     (createUserFormVisible && (
@@ -54,7 +61,8 @@ const MenuBar = ({ user, handleLogout, setUser, addMeme }) => {
         createMeme={addMeme}
         setMemePostFormVisible={setMemePostFormVisible}
       />
-    ))
+    )) ||
+    (aboutSectionVisible && <AboutSection />);
 
   return (
     <div className="menu">
@@ -64,24 +72,29 @@ const MenuBar = ({ user, handleLogout, setUser, addMeme }) => {
             onClick={() => {
               if (!user) {
                 setNotificationMessage(
-                  'Kirjaudu sisään ladataksesi kuvia palvelimelle'
-                )
-                return
+                  "Kirjaudu sisään ladataksesi kuvia palvelimelle"
+                );
+                return;
               }
-              handleVisibility('upload')
+              handleVisibility("upload");
             }}
           >
             Lataa kuvia pankkiin
           </button>
         </div>
         <div className="menu-bar-item">
+          <button onClick={() => handleVisibility("about")}>Sivusta</button>
+        </div>
+        <div className="menu-bar-item">
           <button
             onClick={() => {
               if (user) {
-                setNotificationMessage('Kirjaudu ulos luodaksesi uusi käyttäjä')
-                return
+                setNotificationMessage(
+                  "Kirjaudu ulos luodaksesi uusi käyttäjä"
+                );
+                return;
               }
-              handleVisibility('register')
+              handleVisibility("register");
             }}
           >
             Rekisteröidy
@@ -91,13 +104,13 @@ const MenuBar = ({ user, handleLogout, setUser, addMeme }) => {
           <button
             onClick={() => {
               if (user) {
-                setNotificationMessage('Olet jo kirjautunut sisään')
-                return
+                setNotificationMessage("Olet jo kirjautunut sisään");
+                return;
               }
-              handleVisibility('login')
+              handleVisibility("login");
             }}
           >
-            {user ? user.username : 'Kirjaudu sisään'}
+            {user ? user.username : "Kirjaudu sisään"}
           </button>
         </div>
         <div className="menu-bar-item">
@@ -110,7 +123,7 @@ const MenuBar = ({ user, handleLogout, setUser, addMeme }) => {
       />
       <div className="forms"> {formComponent}</div>
     </div>
-  )
-}
+  );
+};
 
-export default MenuBar
+export default MenuBar;

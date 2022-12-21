@@ -1,70 +1,65 @@
-import React from 'react'
-import memesService from './services/memes'
-import { useEffect, useState } from 'react'
-import MemePostForm from './components/MemePostForm'
-import MemeFeed from './components/MemeFeed'
-import SearchBar from './components/SearchBar'
-import LoadingSpinner from './components/LoadingSpinner'
-import userService from './services/user'
-import MenuBar from './components/MenuBar'
+import React from "react";
+import memesService from "./services/memes";
+import { useEffect, useState } from "react";
+import MemeFeed from "./components/MemeFeed";
+import SearchBar from "./components/SearchBar";
+import LoadingSpinner from "./components/LoadingSpinner";
+import userService from "./services/user";
+import MenuBar from "./components/MenuBar";
 
 function App() {
-  const [memes, setMemes] = useState([])
-  const [searchResults, setSearchResults] = useState([])
-  const [user, setUser] = useState(null)
-  const [spinner, setSpinner] = useState(false)
+  const [memes, setMemes] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [user, setUser] = useState(null);
+  const [spinner, setSpinner] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      const newMemes = await memesService.getAll()
-      setMemes(newMemes.reverse())
-      setSearchResults(newMemes)
-    }
-    fetchData()
-  }, [])
+      const newMemes = await memesService.getAll();
+      setMemes(newMemes.reverse());
+      setSearchResults(newMemes);
+    };
+    fetchData();
+  }, []);
 
   useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem('loggedMemeAppUser')
+    const loggedUserJSON = window.localStorage.getItem("loggedMemeAppUser");
     if (loggedUserJSON) {
-      const user = JSON.parse(loggedUserJSON)
-      setUser(user)
-      memesService.setToken(user.token)
-      userService.setToken(user.token)
+      const user = JSON.parse(loggedUserJSON);
+      setUser(user);
+      memesService.setToken(user.token);
+      userService.setToken(user.token);
     }
-  }, [])
+  }, []);
 
   const addMeme = (files) => {
-    setSpinner(true)
+    setSpinner(true);
     const postData = async () => {
-      const postedMemes = []
+      const postedMemes = [];
       for (let i = 0; i < files.length; i++) {
-        const returnedMeme = await memesService.create(files[i])
-        postedMemes.push(returnedMeme.data)
+        const returnedMeme = await memesService.create(files[i]);
+        postedMemes.push(returnedMeme.data);
       }
-      const newMemes = postedMemes.concat(memes)
-      setMemes(newMemes)
-      setSearchResults(newMemes)
-      setSpinner(false)
-    }
-    postData()
-  }
+      const newMemes = postedMemes.concat(memes);
+      setMemes(newMemes);
+      setSearchResults(newMemes);
+      setSpinner(false);
+    };
+    postData();
+  };
 
   const handleLike = (meme, memeLikes) => {
-    console.log('LikeMeme', meme.id, meme.likes)
+    console.log("LikeMeme", meme.id, meme.likes);
     memesService.update(meme.id, {
       ...meme,
       likes: memeLikes + 1,
-    })
-  }
+    });
+  };
 
   const handleLogout = () => {
-    setUser(null)
-    localStorage.removeItem('loggedMemeAppUser')
-  }
-
-  if (memes.length === 0) {
-    return <MemePostForm createMeme={addMeme} />
-  }
+    setUser(null);
+    localStorage.removeItem("loggedMemeAppUser");
+  };
 
   return (
     <div className="App">
@@ -92,7 +87,7 @@ function App() {
         </>
       )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

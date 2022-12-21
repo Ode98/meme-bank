@@ -1,25 +1,30 @@
-import React from 'react'
-import { useState } from 'react'
+import React from "react";
+import { useState } from "react";
 
-const MemePostForm = ({ createMeme, user, setMemePostFormVisible }) => {
-  const [file, setFile] = useState(null)
-  const isDisabled = user === null
+const MemePostForm = ({
+  createMeme,
+  user,
+  setMemePostFormVisible,
+  setNotificationMessage,
+}) => {
+  const [file, setFile] = useState(null);
+  const isDisabled = user === null;
 
   const handleSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     if (!file) {
-      return
+      return;
     }
-    const files = Object.values(file)
-    createMeme(files)
-    setFile(null)
-    document.getElementById('formid').reset()
-    setMemePostFormVisible(false)
-  }
+    const files = Object.values(file);
+    createMeme(files);
+    setFile(null);
+    document.getElementById("formid").reset();
+    setMemePostFormVisible(false);
+  };
 
   const handleFileChange = (event) => {
-    setFile(event.target.files)
-  }
+    setFile(event.target.files);
+  };
 
   return (
     <div className="meme-post-form">
@@ -39,7 +44,7 @@ const MemePostForm = ({ createMeme, user, setMemePostFormVisible }) => {
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default MemePostForm
+export default MemePostForm;
