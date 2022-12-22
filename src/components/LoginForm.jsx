@@ -3,7 +3,11 @@ import { useState } from "react";
 import loginService from "../services/login";
 import memesService from "../services/memes";
 
-const LoginForm = ({ setUser, setLoginFormVisible }) => {
+const LoginForm = ({
+  setUser,
+  setLoginFormVisible,
+  setNotificationMessage,
+}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,8 +23,15 @@ const LoginForm = ({ setUser, setLoginFormVisible }) => {
       memesService.setToken(user.token);
       setUsername("");
       setPassword("");
+      setNotificationMessage(`Käyttäjä ${user.username} kirjautui sisään`);
       setLoginFormVisible(false);
-    } catch (exception) {}
+    } catch (exception) {
+      if (exception.response.status === 401) {
+        setNotificationMessage("Väärä käyttäjätunnus tai salasana");
+      } else {
+        setNotificationMessage("Tapahtui virhe");
+      }
+    }
   };
 
   return (

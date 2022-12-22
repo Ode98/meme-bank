@@ -1,30 +1,32 @@
-function searchAlg(memes, input) {
-  let result = []
-  const factor = input.length
-  let acc = 1 // Accuracy of search. Bigger number means less accurate but more forgiving search
-  if (factor === 1) {
-    acc = acc - 1
-  }
+function searchAlg(memes, inputWords) {
+  memes.sort((a, b) => {
+    let aMatchCount = 0;
+    let bMatchCount = 0;
 
-  for (let i = 0; i < memes.length; i++) {
-    let includes = true
-    let unMatchingStrings = 0
-    for (let n = 0; n < input.length; n++) {
-      if (memes[i].tags.includes(input[n])) {
-        continue
-      } else {
-        unMatchingStrings = unMatchingStrings + 1
-        if (unMatchingStrings > acc) {
-          includes = false
-        }
-        continue
+    inputWords.forEach((inputWord) => {
+      if (a.tags.includes(inputWord)) {
+        aMatchCount++;
       }
-    }
-    if (includes) {
-      result = result.concat(memes[i])
-    }
-  }
-  return result
+      if (b.tags.includes(inputWord)) {
+        bMatchCount++;
+      }
+    });
+
+    return bMatchCount - aMatchCount;
+  });
+  const matchingMemes = memes.filter((meme) => {
+    let matchCount = 0;
+
+    inputWords.forEach((inputWord) => {
+      if (meme.tags.includes(inputWord)) {
+        matchCount++;
+      }
+    });
+
+    return matchCount > 0;
+  });
+
+  return matchingMemes;
 }
 
-export default searchAlg
+export default searchAlg;

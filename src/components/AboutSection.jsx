@@ -3,16 +3,19 @@ import React from "react";
 const AboutSection = () => {
   return (
     <div className="about-page">
-      <h3>Mitä miksi?</h3>
-      MeemiPankki tai MemeBank on sivu jossa voi katsella muiden lataamia
-      meemejä, ladata niitä, tallentaa niitä ja ennen kaikkea hakea niitä.
       <img src="https://storage.googleapis.com/oden_bucket/meme-library2.png" />
-      Kuten Edellisestä meemistä käy ilmi, meemien etsiminen on aina ollut
-      (ainakin itselleni) jollain tavoin haastavaa ja aikaavievää. MeemiPankki
-      hyödyntää Google Cloudin Vision APIa jonka avulla jokaisesta ladatusta
-      meemistä skannataan talteen siinä oleva teksti ja sitä hyödynnetään
-      meemien indeksoinnissa. Tällä tavoin meemien etsiminen onnistuu
-      hakupalkissa ihan vain siinä olevan sisällön perusteella.
+      <p>
+        MeemiPankki tai MemeBank on sivu jossa voi selata, ladata, tallentaa ja
+        ennen kaikkea hakea meemejä. Kuten edellisestä meemistä käy ilmi,
+        meemien etsiminen on aina ollut (ainakin itselleni) jollain tavoin
+        haastava ja aikaa vievää prosessi. MeemiPankki hyödyntää Google Cloudin
+        Vision APIa, jonka avulla jokaisesta ladatusta meemistä skannataan
+        talteen siinä oleva teksti ja sitä hyödynnetään meemien indeksoinnissa.
+        Tällä tavoin meemien etsiminen onnistuu hakupalkissa ihan vain siinä
+        olevan sisällön perusteella. Kokeile hakea esim. "miesflunssa" tai "no
+        stupid questions". Kuka tahansa pystyy selaamaan ja hakemaan meemejä,
+        mutta vain käyttäjät voivat ladata meemejä pankkiin.
+      </p>
     </div>
   );
 };

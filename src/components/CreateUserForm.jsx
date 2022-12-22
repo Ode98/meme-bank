@@ -2,7 +2,10 @@ import React from "react";
 import { useState } from "react";
 import userService from "../services/user";
 
-const CreateUserForm = ({ setCreateUserFormVisible }) => {
+const CreateUserForm = ({
+  setCreateUserFormVisible,
+  setNotificationMessage,
+}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -13,11 +16,19 @@ const CreateUserForm = ({ setCreateUserFormVisible }) => {
         username,
         password,
       });
+      setNotificationMessage(`Käyttäjä ${username} luotiin onnistuneesti`);
       setUsername("");
       setPassword("");
+
       setCreateUserFormVisible(false);
     } catch (exception) {
-      console.log(exception);
+      if (exception.response.status === 400) {
+        setNotificationMessage("Salasanan tulee olla vähintään 5 merkkiä");
+      } else if (exception.response.status === 409) {
+        setNotificationMessage("Käyttäjätunnus on jo käytössä");
+      } else {
+        setNotificationMessage("Tapahtui virhe");
+      }
     }
   };
 

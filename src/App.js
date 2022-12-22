@@ -12,6 +12,7 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [user, setUser] = useState(null);
   const [spinner, setSpinner] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -68,6 +69,8 @@ function App() {
         handleLogout={handleLogout}
         setUser={setUser}
         addMeme={addMeme}
+        notificationMessage={notificationMessage}
+        setNotificationMessage={setNotificationMessage}
       />
       <h1>MeemiPankki</h1>
       {memes.length === 0 ? (

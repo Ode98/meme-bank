@@ -184,10 +184,12 @@ h1 {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
+  max-width: 300px;
 }
 
 .forms button[type="submit"] {
-  width: 100%;
+  /* width: 100%; */
+  min-width: 300px;
   padding: 12px 20px;
   background-color: #007bff;
   color: white;
@@ -201,11 +203,12 @@ h1 {
 /* notifcation element */
 
 .notification {
+  position: absolute;
+  left: 50%;
+  top: 12%;
+  transform: translate(-50%, -50%);
   color: Blue;
   padding: 10px;
-  border-radius: 5px;
-  align-items: center;
-  margin: auto;
 }
 
 /* Spinner element */
@@ -233,14 +236,10 @@ h1 {
   padding: 20px;
 }
 
-/* .login-form {
+.login-form,
+.create-user-form {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  padding: 16px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 10px;
-  border-radius: 10px;
-  width: 660px;
-  background-color: white;
-} */
+  flex-direction: column;
+  min-width: 300px;
+}

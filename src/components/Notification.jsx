@@ -1,22 +1,21 @@
-import React, {useState} from 'react'
+import React, { useEffect } from "react";
 
 const Notification = ({ notificationMessage, setNotificationMessage }) => {
-  // if (notificationMessage === null) {
-  //   return null
-  // }
+  let timeOut;
 
-  // const [visible, setVisible] = useState(true);
-
-  const closeNotification = () => {
-    setNotificationMessage("")
-    // setVisible(false);
-  }
+  useEffect(() => {
+    if (notificationMessage !== "") {
+      clearTimeout(timeOut);
+      timeOut = setTimeout(() => setNotificationMessage(""), 5000);
+    }
+    return () => clearTimeout(timeOut);
+  }, [notificationMessage]);
 
   if (notificationMessage !== "") {
-    setTimeout(closeNotification, 5000); // Close the notification after 5
-    return <div className="notification">{notificationMessage}</div>
+    return <div className="notification">{notificationMessage}</div>;
   } else {
-    return null
+    return null;
   }
-}
-export default Notification
+};
+
+export default Notification;
