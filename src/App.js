@@ -73,22 +73,15 @@ function App() {
         setNotificationMessage={setNotificationMessage}
       />
       <h1>MeemiPankki</h1>
-      {memes.length === 0 ? (
-        <></>
-      ) : (
-        <>
-          <SearchBar
-            memes={memes}
-            searchResults={searchResults}
-            setSearchResults={setSearchResults}
-          />
-          <div className="spinner-element">
-            {spinner ? <LoadingSpinner /> : <></>}
-          </div>
-
-          <MemeFeed memes={searchResults} handleLike={handleLike} user={user} />
-        </>
-      )}
+      <SearchBar
+        memes={memes}
+        searchResults={searchResults}
+        setSearchResults={setSearchResults}
+      />
+      <div className="spinner-element">
+        {spinner ? <LoadingSpinner /> : <></>}
+      </div>
+      <MemeFeed memes={searchResults} handleLike={handleLike} user={user} />
     </div>
   );
 }
