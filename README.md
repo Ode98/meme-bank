@@ -6,7 +6,7 @@ MeemiPankki tai MemeBank on sivu jossa voi selata, ladata, tallentaa ja ennen ka
 
 ## Mahdollisia lisäyksiä tulevaisuudessa
 
-- Meemien automaattinen croppaus. Meemejä selatessa on saattanut huomata, että joissakin tapauksissa ladatun meemin ympärillä on suuri valkoinen marginaali, joka estää kuvan näyttämisen isompana.
+- Meemien automaattinen croppaus. Meemejä selatessa on saattanut huomata, että joissakin tapauksissa ladatun meemin ympärillä on suuri valkoinen marginaali, joka estää kuvan näyttämisen isompana. Tämän voisi korjata croppaamalla kuva automaattisesti serverillä ennen sen postaamista. Tämäkin saattaisi lisätä jonkun verran lataamiseen käytettävää aikaa.
 - Tykkäys ja kommentointi. Tykkäystoiminto on periaatteessa jo koodattu sivulle, mutta poistin sen käytöstä, koska se ei mielestäni sopinut sovelluksen ulkonäköön eikä käyttäjäkokemukseen.
 - Oma meemisivu. Olisi hyvä jos käyttäjät pystyisivät selaamaan vain itse lisäämiään meemejä.
 - Gamifikaatio. Aktiivisia meemien lataajia voisi palkita jotenkin. Esim sovelluksessa voisi olla ns. leaderboard, josta näkyy top 5 aktiivisinta meemien postaajaa.
@@ -31,6 +31,7 @@ MeemiPankki tai MemeBank on sivu jossa voi selata, ladata, tallentaa ja ennen ka
 | 20.12.2022 | 7      | Lisätty valikkopalkin ominaisuudet ja muotoiltu, muotoiltu formit avautumaan ja sulkeutumaan painalluksesta. Lisätty notifikaatiokomponentti.                                                                                  |
 | 21.12.2022 | 6      | Lisätty About-sivu, suoritettu sovelluksen testausta, korjattu bugi joka esti tekstittömän kuvan lisäämisen. Refaktoroitu koodia. Muokattu notifikaatiota.                                                                     |
 | 22.12.2022 | 7      | Korjailtu formien tyylejä, korjattu notification timer. Lisätty error handlingiä käyttäjäluontiin ja kirjautumiseen. Lisätty notifikaatioviestejä. Tehty hakualgoritmi kertaalleen vielä uusiksi, kirjoitettu readme puhtaaksi |
-| Yhteensä   | 84     |
+| 23.12.2022 | 6      | Refakoroitu ja siivottu backendin koodi. Deployattu sovellus fly.io kautta nettiin.                                                                                                                                            |
+| Yhteensä   | 90     |
 | Tavoite    | 87.5   |
-| Suoritettu | 95%    |
+| Suoritettu | 100%   |
