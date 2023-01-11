@@ -1,5 +1,9 @@
 # Harjoitustyö MemeBank
 
+## Sijainti
+
+https://memebank.fly.dev/
+
 ## Käyttötarkoitus
 
 MeemiPankki tai MemeBank on sivu jossa voi selata, ladata, tallentaa ja ennen kaikkea hakea meemejä. Tietyn meemien etsiminen on aina ollut (ainakin itselleni) jollain tavoin haastava ja aikaa vievää prosessi. MeemiPankki hyödyntää Google Cloudin Vision APIa, jonka avulla jokaisesta ladatusta meemistä skannataan talteen siinä oleva teksti ja sitä hyödynnetään meemien indeksoinnissa. Tällä tavoin meemien etsiminen onnistuu hakupalkissa ihan vain siinä olevan sisällön perusteella.
