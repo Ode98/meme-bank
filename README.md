@@ -8,6 +8,10 @@ https://memebank.fly.dev/
 
 MeemiPankki tai MemeBank on sivu jossa voi selata, ladata, tallentaa ja ennen kaikkea hakea meemejä. Tietyn meemien etsiminen on aina ollut (ainakin itselleni) jollain tavoin haastava ja aikaa vievää prosessi. MeemiPankki hyödyntää Google Cloudin Vision APIa, jonka avulla jokaisesta ladatusta meemistä skannataan talteen siinä oleva teksti ja sitä hyödynnetään meemien indeksoinnissa. Tällä tavoin meemien etsiminen onnistuu hakupalkissa ihan vain siinä olevan sisällön perusteella.
 
+## Käyttöohje
+
+Pääsivulla on kaikkia meemit ja niitä voi selailla läpi. Hakupalkista voi hakea meemejä niiden sisällön eli kuvassa näkyvien tekstien perusteella. Voi kokeilla esimerkiksi etsimällä hakupalkista "miesflunssa". Yläpalkissa on rekisteröitymis ja kirjautusmismahdollisuus. Jotta kuvia voi itse ladata palvelimelle, täytyy ensin rekisteröityä ja kirjautua sisään. Sivusta osio kertoo tarkemmin sivun tarkoituksesta. Meemejä voi ladata useamman kerralla valitsemalla useamman tiedoston. Vain jpg, jpeg, png ja webp tiedostot ovat sallittuja.
+
 ## Mahdollisia lisäyksiä tulevaisuudessa
 
 - Meemien automaattinen croppaus. Meemejä selatessa on saattanut huomata, että joissakin tapauksissa ladatun meemin ympärillä on suuri valkoinen marginaali, joka estää kuvan näyttämisen isompana. Tämän voisi korjata croppaamalla kuva automaattisesti serverillä ennen sen postaamista. Tämäkin saattaisi lisätä jonkun verran lataamiseen käytettävää aikaa.
